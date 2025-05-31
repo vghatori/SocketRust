@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id ="form">
+        username : <input type="text" id="user"></br>
+        <button>enter</button>
+    </form>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+    <script type="module">
+        const socket = io("http://localhost:5000/");
+
+        let form = document.getElementById("form");
+        let user = document.getElementById("user");
+
+        // form.addEventListener("submit", () => {
+        //     event.preventDefault();
+        //     if(user.value) {            
+        //         socket.emit("message", user.value);
+        //         user.value = '';
+        //     }
+        // })      
+        socket.on("message-back", (data) => {
+            console.log(data); // undefined
+        });
+    </script>
+</body>
+</html>
